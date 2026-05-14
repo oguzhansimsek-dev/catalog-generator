@@ -1,0 +1,182 @@
+======================================================================
+KATALOG ↔ EXCEL AUDIT RAPORU
+======================================================================
+
+PDF dosyası: MD CATALOG 2025 TR-EN.pdf
+Excel dosyası: fiyat-listesi.xlsx
+PDF'teki unique kod (raw): 363
+PDF'te başlık konumlu kod: 357
+PDF'te SADECE tabloda olan kod: 6
+Excel'deki kod: 361
+
+──────────────────────────────────────────────────────────────────────
+1. PDF'TE OCR TYPO'LARI (kanonik ↔ typo) — 2 adet
+──────────────────────────────────────────────────────────────────────
+Bu kodlar dedup mantığı ile elenir. PDF'te elle düzeltirsen daha net olur.
+
+  'ZMD-7OG10S' (sayfa [14]) ↔ TYPO 'ZMD-7OG1OS' (sayfa [14])
+  'ZMD-7OG10WS' (sayfa [15]) ↔ TYPO 'ZMD-7OG1OWS' (sayfa [15])
+
+──────────────────────────────────────────────────────────────────────
+2. BAŞLIK KONUMU OLMAYAN KODLAR — 6 adet
+──────────────────────────────────────────────────────────────────────
+Bu kodlar sadece spec tablosunda görünüyor; ayrı ürün başlığı yok.
+Bu kodlara fiyat BASILMAYACAK. Eğer fiyat istiyorsan PDF'e ürün başlığı eklenmeli.
+
+  'MD.7AIL.8030' — sayfa [68]
+  'ZMD-7OG1OS' — sayfa [14]
+  'ZMD-7OG1OWS' — sayfa [15]
+  'ZMD-9GM10' — sayfa [48]
+  'ZMD-9OG20' — sayfa [14]
+  'ZMD-9OG20S' — sayfa [14]
+
+──────────────────────────────────────────────────────────────────────
+3. ÜST ÜSTE YIĞIN KODLAR — 21 adet
+──────────────────────────────────────────────────────────────────────
+İki kod yatay olarak iç içe; algoritma birinin fiyatını üste, ötekinin altına basar.
+
+  sayfa 53: 'ZMD-7TN05S' ÜSTÜ + 'ZMD-7TN05' ALT (yığın)
+  sayfa 53: 'ZMD-7TC10S' ÜSTÜ + 'ZMD-7TC10' ALT (yığın)
+  sayfa 53: 'ZMD-7TN10S' ÜSTÜ + 'ZMD-7TN10' ALT (yığın)
+  sayfa 54: 'ZMD-7TE10S' ÜSTÜ + 'ZMD-7TE10' ALT (yığın)
+  sayfa 54: 'ZMD-7TC20S' ÜSTÜ + 'ZMD-7TC20' ALT (yığın)
+  sayfa 54: 'ZMD-7TN20S' ÜSTÜ + 'ZMD-7TN20' ALT (yığın)
+  sayfa 55: 'ZMD-9TN05S' ÜSTÜ + 'ZMD-9TN05' ALT (yığın)
+  sayfa 55: 'ZMD-9TC10S' ÜSTÜ + 'ZMD-9TC10' ALT (yığın)
+  sayfa 55: 'ZMD-9TN10S' ÜSTÜ + 'ZMD-9TN10' ALT (yığın)
+  sayfa 56: 'ZMD-9TE10S' ÜSTÜ + 'ZMD-9TE10' ALT (yığın)
+  sayfa 56: 'ZMD-9TC20S' ÜSTÜ + 'ZMD-9TC20' ALT (yığın)
+  sayfa 56: 'ZMD-9TN20S' ÜSTÜ + 'ZMD-9TN20' ALT (yığın)
+  sayfa 57: 'ZMD-7TN10C' ÜSTÜ + 'ZMD-9TN10C' ALT (yığın)
+  sayfa 57: 'ZMD-TC10C' ÜSTÜ + 'ZMD-9TC10C' ALT (yığın)
+  sayfa 90: 'ZMD.BYM052' ÜSTÜ + 'ZMD.BYM052T' ALT (yığın)
+  sayfa 91: 'ZMD.BYM052S' ÜSTÜ + 'ZMD.BYM052ST' ALT (yığın)
+  sayfa 92: 'ZMD.BYM042' ÜSTÜ + 'ZMD.BYM042T' ALT (yığın)
+  sayfa 93: 'ZMD.BYM042S' ÜSTÜ + 'ZMD.BYM042ST' ALT (yığın)
+  sayfa 94: 'ZMD.BYM102' ÜSTÜ + 'ZMD.BYM102T' ALT (yığın)
+  sayfa 95: 'ZMD.BYM102S' ÜSTÜ + 'ZMD.BYM102ST' ALT (yığın)
+  sayfa 96: 'ZMD.BYM102-HR' ÜSTÜ + 'ZMD.BYM102B-HR' ALT (yığın)
+
+──────────────────────────────────────────────────────────────────────
+4. ÇOK SAYFAYA YAYILMIŞ KODLAR — 0 adet
+──────────────────────────────────────────────────────────────────────
+Aynı kod, farklı sayfalarda ürün başlığı olarak görünüyor (varyant/duplikat).
+
+  Yok.
+
+──────────────────────────────────────────────────────────────────────
+5. EXCEL'DE VAR, PDF'TE HİÇ YOK — 0 adet
+──────────────────────────────────────────────────────────────────────
+Excel'e yazıldı ama PDF'te bu kod hiç geçmiyor. Yazım hatası kontrol et.
+
+  Yok.
+
+──────────────────────────────────────────────────────────────────────
+6. PDF'TE VAR, EXCEL'DE YOK — 2 adet
+──────────────────────────────────────────────────────────────────────
+PDF'te var ama Excel şablonunda yok. (Çoğu OCR typo olur — bkz. bölüm 1.)
+
+  'ZMD-7OG1OS' — sayfa [14]
+  'ZMD-7OG1OWS' — sayfa [15]
+
+──────────────────────────────────────────────────────────────────────
+7. SAYFA BAZLI BAŞLIK SAYIMI
+──────────────────────────────────────────────────────────────────────
+Hangi sayfada kaç ürün başlığı var (fiyat basılacak adet).
+
+  sayfa   6: 4 ürün → ZMD-7KE10S, ZMD-9KE10S, ZMD-9KE10, ZMD-7KE10
+  sayfa   7: 4 ürün → ZMD-7KE20S, ZMD-9KE20S, ZMD-9KE20, ZMD-7KE20
+  sayfa   8: 4 ürün → ZMD-7KE30S, ZMD-9KE30S, ZMD-9KE30, ZMD-7KE30
+  sayfa   9: 6 ürün → ZMD-7KE23, ZMD-9KE23, ZMD-9KE33, ZMD-7KE33, ZMD-9KE33F, ZMD-7KE33F
+  sayfa  10: 4 ürün → ZMD-7KG10S, ZMD-9KG10S, ZMD-9KG10, ZMD-7KG10
+  sayfa  11: 4 ürün → ZMD-7KG20S, ZMD-9KG20S, ZMD-9KG20, ZMD-7KG20
+  sayfa  12: 4 ürün → ZMD-7KG30S, ZMD-9KG30S, ZMD-9KG30, ZMD-7KG30
+  sayfa  13: 6 ürün → ZMD-7KG23, ZMD-9KG23, ZMD-9KG33, ZMD-7KG33, ZMD-9KG33F, ZMD-7KG33F
+  sayfa  14: 4 ürün → ZMD-7OG10S, ZMD-9OG10S, ZMD-9OG10, ZMD-7OG10
+  sayfa  15: 4 ürün → ZMD-7OG10WS, ZMD-9OG10WS, ZMD-9OG10W, ZMD-7OG10W
+  sayfa  16: 4 ürün → ZMD-7OE10IS, ZMD-9OE10IS, ZMD-9OE10I, ZMD-7OE10I
+  sayfa  17: 4 ürün → ZMD-7OE20IS, ZMD-9OE20IS, ZMD-9OE20I, ZMD-7OE20I
+  sayfa  18: 4 ürün → ZMD-7IE11S, ZMD-9IE11S, ZMD-9IE11, ZMD-7IE11
+  sayfa  19: 4 ürün → ZMD-7IE10S, ZMD-9IE10S, ZMD-9IE10, ZMD-7IE10
+  sayfa  20: 4 ürün → ZMD-7IE20S, ZMD-9IE20S, ZMD-9IE20, ZMD-7IE20
+  sayfa  21: 4 ürün → ZMD-7IE21S, ZMD-9IE21S, ZMD-9IE21, ZMD-7IE21
+  sayfa  22: 4 ürün → ZMD-7IE22S, ZMD-9IE22S, ZMD-9IE22, ZMD-7IE22
+  sayfa  23: 4 ürün → ZMD-7IE30S, ZMD-9IE30S, ZMD-9IE30, ZMD-7IE30
+  sayfa  24: 4 ürün → ZMD-7IE31S, ZMD-9IE31S, ZMD-9IE31, ZMD-7IE31
+  sayfa  25: 4 ürün → ZMD-7IE32S, ZMD-9IE32S, ZMD-9IE32, ZMD-7IE32
+  sayfa  26: 4 ürün → ZMD-7IG11S, ZMD-9IG11S, ZMD-9IG11, ZMD-7IG11
+  sayfa  27: 4 ürün → ZMD-7IG10S, ZMD-9IG10S, ZMD-9IG10, ZMD-7IG10
+  sayfa  28: 4 ürün → ZMD-7IG20S, ZMD-9IG20S, ZMD-9IG20, ZMD-7IG20
+  sayfa  29: 4 ürün → ZMD-7IG21S, ZMD-9IG21S, ZMD-9IG21, ZMD-7IG21
+  sayfa  30: 4 ürün → ZMD-7IG22S, ZMD-9IG22S, ZMD-9IG22, ZMD-7IG22
+  sayfa  31: 4 ürün → ZMD-7IG30S, ZMD-9IG30S, ZMD-9IG30, ZMD-7IG30
+  sayfa  32: 4 ürün → ZMD-7IG31S, ZMD-9IG31S, ZMD-9IG31, ZMD-7IG31
+  sayfa  33: 4 ürün → ZMD-7IG32S, ZMD-9IG32S, ZMD-9IG32, ZMD-7IG32
+  sayfa  34: 4 ürün → ZMD-7LG10S, ZMD-9LG10S, ZMD-9LG10, ZMD-7LG10
+  sayfa  35: 4 ürün → ZMD-7LG20S, ZMD-9LG20S, ZMD-9LG20, ZMD-7LG20
+  sayfa  36: 4 ürün → ZMD-7LG30S, ZMD-9LG30S, ZMD-9LG30, ZMD-7LG30
+  sayfa  37: 4 ürün → ZMD-7ZG10S, ZMD-9ZG10S, ZMD-9ZG10, ZMD-7ZG10
+  sayfa  38: 4 ürün → ZMD-7ZG20S, ZMD-9ZG20S, ZMD-9ZG20, ZMD-7ZG20
+  sayfa  39: 4 ürün → ZMD-7ZG30S, ZMD-9ZG30S, ZMD-9ZG30, ZMD-7ZG30
+  sayfa  40: 4 ürün → ZMD-7BE10S, ZMD-9BE10S, ZMD-9BE10, ZMD-7BE10
+  sayfa  41: 4 ürün → ZMD-7BE20S, ZMD-9BE20S, ZMD-9BE20, ZMD-7BE20
+  sayfa  42: 4 ürün → ZMD-7HE10S, ZMD-9HE10S, ZMD-9HE10, ZMD-7HE10
+  sayfa  43: 4 ürün → ZMD-7FE10S, ZMD-9FE10S, ZMD-9FE10, ZMD-7FE10
+  sayfa  44: 4 ürün → ZMD-7FE20S, ZMD-9FE20S, ZMD-9FE20, ZMD-7FE20
+  sayfa  45: 4 ürün → ZMD-7FG10, ZMD-9FG10, ZMD-9FG20, ZMD-7FG20
+  sayfa  46: 4 ürün → ZMD-7ME10S, ZMD-9ME10S, ZMD-9ME10, ZMD-7ME10
+  sayfa  47: 4 ürün → ZMD-7ME20S, ZMD-9ME20S, ZMD-9ME20, ZMD-7ME20
+  sayfa  48: 4 ürün → ZMD-7MG10, ZMD-9MG10, ZMD-9MG20, ZMD-7MG20
+  sayfa  49: 6 ürün → ZMD-9SE10, ZMD-9SE15, ZMD-9SG15, ZMD-9SG10, ZMD-9RG25, ZMD-7SE05
+  sayfa  50: 4 ürün → ZMD-7DE06, ZMD-7DE06T, ZMD-7DG06T, ZMD-7DG06
+  sayfa  51: 4 ürün → ZMD-9DE08, ZMD-9DE08T, ZMD-9DG08, ZMD-9DG08T
+  sayfa  52: 4 ürün → ZMD-9DE12, ZMD-9DE12T, ZMD-9DG12, ZMD-9DG12T
+  sayfa  53: 6 ürün → ZMD-7TN05S, ZMD-7TN05, ZMD-7TC10, ZMD-7TC10S, ZMD-7TN10, ZMD-7TN10S
+  sayfa  54: 6 ürün → ZMD-7TE10S, ZMD-7TE10, ZMD-7TC20, ZMD-7TC20S, ZMD-7TN20, ZMD-7TN20S
+  sayfa  55: 6 ürün → ZMD-9TN05S, ZMD-9TN05, ZMD-9TC10, ZMD-9TC10S, ZMD-9TN10, ZMD-9TN10S
+  sayfa  56: 6 ürün → ZMD-9TE10S, ZMD-9TE10, ZMD-9TC20, ZMD-9TC20S, ZMD-9TN20, ZMD-9TN20S
+  sayfa  57: 5 ürün → ZMD-7TN10C, ZMD-9TN10C, ZMD-9TC10C, ZMD-7TC10C, ZMD-TC10C
+  sayfa  60: 6 ürün → MD.7AOE.4030, MD.7AOE.8030, MD.7AOE.12030, MD.7AOG.12030, MD.7AOG.4030, MD.7AOG.8030
+  sayfa  61: 4 ürün → MD.7AKE.8085, MD.7AKE.12085, MD.7AKG.12085, MD.7AKG.8085
+  sayfa  62: 5 ürün → MD.7AOGY.4030, MD.7AOGY.8030, MD.7AOGY.12030, MD.7AOW.8030, MD.7AOW.4030
+  sayfa  63: 4 ürün → MD.7AAD.4056, MD.7AAD.6056, MD.7AAD.12056, MD.7AAD.8056
+  sayfa  64: 4 ürün → MD.7AIE.4030, MD.7AIEO.4030, MD.7AIEOC.4030, MD.7AIEC.4030
+  sayfa  65: 6 ürün → MD.7AIE.6030, MD.7AIEO.6030, MD.7AIEOD.6030, MD.7AIEODC.6030, MD.7AIEC.6030, MD.7AIEOC.6030
+  sayfa  66: 6 ürün → MD.7AIE.8030, MD.7AIEO.8030, MD.7AIEOD.8030, MD.7AIEODC.8030, MD.7AIEC.8030, MD.7AIEOC.8030
+  sayfa  67: 4 ürün → MD.7AAIG.4030, MD.7AAIG.6030, MD.7AAIG.12030, MD.7AAIG.8030
+  sayfa  68: 4 ürün → MD.7AIL.4030, MD.7AIL.6030, MD.7AIL.12030, MD.7AL.8030
+  sayfa  69: 5 ürün → MD.7AFE.4030, MD.7AFE.6030, MD.7AFE.8030, MD.7AFG.8085, MD.7AFG.4085
+  sayfa  70: 5 ürün → MD.7APE.4030, MD.7ABE.4030, MD.7ABE.8030, MD.7AMG.4085, MD.7AME.4030
+  sayfa  71: 3 ürün → MD.7AAT.4030, MD.7AAT.6030, MD.7AAT.8030
+  sayfa  74: 2 ürün → ZMD.140.80.01, ZMD.70.80.01
+  sayfa  75: 2 ürün → ZMD.140.80.02, ZMD.70.80.02
+  sayfa  76: 2 ürün → ZMD.140.80.03, ZMD.70.80.03
+  sayfa  77: 4 ürün → ZMD.150.70.01, ZMD.125.70.01, ZMD.200.70.01, ZMD.255.70.01
+  sayfa  78: 4 ürün → ZMD.255.70.01-4C, ZMD.255.70.01-2C, ZMD.255.70.01-6C, ZMD.255.70.01-8C
+  sayfa  79: 3 ürün → ZMD.200.70.01-4C, ZMD.200.70.01-2C, ZMD.200.70.01-6C
+  sayfa  80: 4 ürün → ZMD.150.70.02, ZMD.125.70.02, ZMD.200.70.02, ZMD.255.70.02
+  sayfa  81: 4 ürün → ZMD.150.70.01-4C, ZMD.150.70.01-2C, ZMD.210.80.01, ZMD.160.80.02
+  sayfa  82: 4 ürün → ZMD.150.80.01-PSYG, ZMD.150.80.01-PSY, ZMD.200.80.01-PSYG, ZMD.200.80.01-PSY
+  sayfa  83: 4 ürün → ZMD.200.70.01-PSO, ZMD.150.70.01-PSO, ZMD.150.70.01-PS, ZMD.200.70.01-PS
+  sayfa  84: 3 ürün → ZMD.200.70.03, ZMD.150.70.03, ZMD.255.70.03
+  sayfa  85: 2 ürün → ZMD.200.70.01-S, ZMD.160.70.01-S
+  sayfa  86: 2 ürün → ZMD.200.70.02-S, ZMD.160.70.02-S
+  sayfa  87: 2 ürün → ZMD.240.70.02-S, ZMD.240.70.01-S
+  sayfa  90: 2 ürün → ZMD.BYM052, ZMD.BYM052T
+  sayfa  91: 2 ürün → ZMD.BYM052S, ZMD.BYM052ST
+  sayfa  92: 2 ürün → ZMD.BYM042, ZMD.BYM042T
+  sayfa  93: 2 ürün → ZMD.BYM042S, ZMD.BYM042ST
+  sayfa  94: 2 ürün → ZMD.BYM102, ZMD.BYM102T
+  sayfa  95: 2 ürün → ZMD.BYM102S, ZMD.BYM102ST
+  sayfa  96: 2 ürün → ZMD.BYM102-HR, ZMD.BYM102B-HR
+  sayfa  97: 1 ürün → ZMD.BYK 270L-R
+  sayfa  98: 1 ürün → ZMD.BYK 220L-R
+  sayfa  99: 1 ürün → ZMD.BYK 360L-R
+  sayfa 100: 1 ürün → ZMD.BKE1500L/R
+  sayfa 101: 1 ürün → ZMD.BKE2000L/R
+  sayfa 104: 8 ürün → MD.W1C, MD.W1K, MD.P1Y, MD.W2C, MD.W2K, MD.P2Y, MD.KR1, MD.KR2
+  sayfa 105: 9 ürün → MD.T1E16, MD.T1E20, MD.T2E20, MD.FR3, MD.FR5, MD.FR8, MD.FR6, MD.FR10, MD.FR16
+
+======================================================================
+RAPOR BİTTİ
+======================================================================
