@@ -503,18 +503,17 @@ def build_overlay(
                     plot_y_top = mk["top"]
                     baseline_y = h - plot_y_top - PRICE_SIZE
 
-                    # Marker'ı beyaz kutuyla ört
-                    pad_mk = 1
+                    # Marker yerinde mavi badge + beyaz fiyat
+                    # Önce marker bbox'ını beyaz kutu ile temizle (placeholder silinir)
                     c.setFillColorRGB(1, 1, 1)
                     c.rect(
-                        mk["x0"] - pad_mk,
-                        h - mk["bottom"] - pad_mk,
-                        (mk["x1"] - mk["x0"]) + 2 * pad_mk,
-                        (mk["bottom"] - mk["top"]) + 2 * pad_mk,
+                        mk["x0"] - 1,
+                        h - mk["bottom"] - 1,
+                        (mk["x1"] - mk["x0"]) + 2,
+                        (mk["bottom"] - mk["top"]) + 2,
                         stroke=0,
                         fill=1,
                     )
-
                     c.setFillColor(PRICE_COLOR)
                     c.drawString(plot_x, baseline_y, text)
 
@@ -604,27 +603,8 @@ def build_overlay(
                         plot_y_top = (y_top + y_bot - PRICE_SIZE) / 2 - 2
                         label = "left"
 
-                    # 3) Final konum koyu bir alana düşüyor mu? Düşüyorsa beyaz
-                    #    arkaplan ile kontrast sağla.
-                    bbox = (plot_x, plot_y_top, plot_x + text_w, plot_y_top + PRICE_SIZE)
-                    bg_color = _overlapping_fill_color(bbox, page_colored_fills)
-                    needs_white_bg = bg_color is not None and _is_dark_color(bg_color)
-
                     placement_stats[label] = placement_stats.get(label, 0) + 1
-
                     baseline_y = h - plot_y_top - PRICE_SIZE
-
-                    if needs_white_bg:
-                        pad = 2
-                        c.setFillColorRGB(1, 1, 1)
-                        c.rect(
-                            plot_x - pad,
-                            baseline_y - pad,
-                            text_w + 2 * pad,
-                            PRICE_SIZE + 2 * pad,
-                            stroke=0,
-                            fill=1,
-                        )
 
                     c.setFillColor(PRICE_COLOR)
                     c.drawString(plot_x, baseline_y, text)
