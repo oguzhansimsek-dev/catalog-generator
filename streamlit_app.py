@@ -214,9 +214,9 @@ def oz_match(md_code: str, oz_by_sig: dict):
 def build_price_excel(
     codes_pages: dict,
     brand_data: dict,
-    oz_discount: float,
-    oz_otv: float,
-    oz_margin: float,
+    discount: float,
+    otv: float,
+    margin: float,
 ) -> bytes:
     """fiyat-listesi.xlsx için bytes döner."""
     wb = Workbook()
@@ -244,7 +244,7 @@ def build_price_excel(
             m = oz_match(code, brand_data["ÖZTİRYAKİLER"]["oz_by_sig"])
             if m:
                 oz_code, name, oz_price = m
-                price = round(oz_price * oz_discount * oz_otv * oz_margin, 2)
+                price = round(oz_price * discount * otv * margin, 2)
                 currency = "EUR"
                 desc = name
                 source = f"ÖZTİRYAKİLER {oz_code}"
