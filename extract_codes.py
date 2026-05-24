@@ -15,7 +15,7 @@ OUT_XLSX = Path(__file__).parent / "fiyat-listesi.xlsx"
 # ZMD-7KE23, ZMD.150.70.01-2C, MD.7AKE.8085 gibi kodları yakalar.
 # Opsiyonel boşluklu varyant suffix de dahil edilir (örn. "ZMD.BYK 270L-R").
 CODE_RE = re.compile(
-    r"\b(?:ZMD|MD)[.\-][A-Z0-9][A-Z0-9.\-/]*[A-Z0-9]"
+    r"\b(?:Z?MD)[A-Z0-9]{0,3}[.\-][A-Z0-9][A-Z0-9.\-/]*[A-Z0-9]"
     r"(?:\s+\d[A-Z0-9.\-/]*[A-Z][A-Z0-9.\-/]*)?\b"
 )
 

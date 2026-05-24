@@ -25,7 +25,9 @@ XLSX = HERE / "fiyat-listesi.xlsx"
 PDF_OUT_DEFAULT = HERE / "MD CATALOG 2025 - FIYATLI.pdf"
 
 CODE_RE = re.compile(
-    r"\b(?:ZMD|MD)[.\-][A-Z0-9][A-Z0-9.\-/]*[A-Z0-9]"
+    # ZMD veya MD ile başlar, opsiyonel kısa alfanümerik ek (örn. MDK4, MDE4),
+    # sonra . veya - ile model kısmı gelir.
+    r"\b(?:Z?MD)[A-Z0-9]{0,3}[.\-][A-Z0-9][A-Z0-9.\-/]*[A-Z0-9]"
     r"(?:\s+\d[A-Z0-9.\-/]*[A-Z][A-Z0-9.\-/]*)?\b"
 )
 
@@ -35,7 +37,7 @@ CODE_RE = re.compile(
 MARKER_RE = re.compile(r"\[[Ff][IİIıi][Yy][Aa][Tt]\]")
 
 # Overlay görünümü
-PRICE_COLOR = HexColor("#C00000")  # koyu kırmızı
+PRICE_COLOR = HexColor("#1F4E79")  # koyu mavi
 PRICE_FONT = "Helvetica-Bold"
 PRICE_SIZE = 9
 PRICE_LINE_GAP = -1  # kodun alt kenarı ile fiyat üst kenarı arasındaki boşluk (pt)
@@ -73,7 +75,8 @@ def load_prices(xlsx_path: Path) -> dict[str, str]:
             continue
         try:
             p = float(price)
-            formatted = f"{p:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            # Ondalıksız, binlik ayırıcı nokta: 12345.67 → "12.346"
+            formatted = f"{round(p):,}".replace(",", ".")
         except (TypeError, ValueError):
             formatted = str(price)
         out[str(code).strip()] = f"{formatted} {curr or 'TL'}"
@@ -564,21 +567,41 @@ def build_overlay(
                     c.setFont(PRICE_FONT, PRICE_SIZE)
                     text_w = c.stringWidth(text, PRICE_FONT, PRICE_SIZE)
 
-                    # 1) Default konum: kodun ALTINA (veya yığın üstündeyse ÜSTÜNE)
-                    plot_x = x1 - text_w
+                    # 1) Default konum:
+                    #    - Yığın varsa (üstteki kod) → fiyat kodun SOLUNA gider
+                    #      (üst kısımda başlık/banner riski var)
+                    #    - Tek başına ise → kodun ALTINA
                     if _has_code_just_below(pos):
-                        plot_y_top = y_top - PRICE_LINE_GAP - PRICE_SIZE
-                        label = "above"
+                        plot_x = x0 - 6 - text_w
+                        plot_y_top = (y_top + y_bot - PRICE_SIZE) / 2 - 2
+                        label = "left"
                     else:
+                        plot_x = x1 - text_w
                         plot_y_top = y_bot + PRICE_LINE_GAP
                         label = "below"
 
-                    # 2) Default konum renkli bir alana mı düşüyor? Düşüyorsa
-                    #    fiyatı kodun SOLUNA al.
+                    # 2) Default konum renkli bir alana VEYA başka bir metne
+                    #    çakışıyor mu? (Outline metinler renkli fill değildir
+                    #    ama yine de görsel engeldir.) Düşüyorsa SOL'A al.
+                    def _bbox_collides(bbox):
+                        if _overlapping_fill_color(bbox, page_colored_fills) is not None:
+                            return True
+                        # Aynı sayfadaki başka kelimelerle çakışma (kodun kendisi hariç)
+                        for w in page_words:
+                            wt = w["text"].strip()
+                            # Kodun kendisi, yan kod veya bu sayfada işlenen kod kelimeleri hariç
+                            if wt == code:
+                                continue
+                            ox = max(0, min(bbox[2], w["x1"]) - max(bbox[0], w["x0"]))
+                            oy = max(0, min(bbox[3], w["bottom"]) - max(bbox[1], w["top"]))
+                            if ox * oy > 5:  # 5 sq pt'ten büyük çakışma
+                                return True
+                        return False
+
                     bbox = (plot_x, plot_y_top, plot_x + text_w, plot_y_top + PRICE_SIZE)
-                    if _overlapping_fill_color(bbox, page_colored_fills) is not None:
+                    if _bbox_collides(bbox):
                         plot_x = x0 - 6 - text_w
-                        plot_y_top = (y_top + y_bot - PRICE_SIZE) / 2
+                        plot_y_top = (y_top + y_bot - PRICE_SIZE) / 2 - 2
                         label = "left"
 
                     # 3) Final konum koyu bir alana düşüyor mu? Düşüyorsa beyaz
